@@ -24,8 +24,9 @@ import PluginsTab from "@components/VencordSettings/PluginsTab";
 import UpdaterTab from "@components/VencordSettings/UpdaterTab";
 import VencordTab from "@components/VencordSettings/VencordTab";
 import { Devs } from "@utils/constants";
+import { getIntlMessage } from "@utils/discord";
 import definePlugin, { OptionType } from "@utils/types";
-import { i18n, React } from "@webpack/common";
+import { React } from "@webpack/common";
 
 import gitHash from "~git-hash";
 
@@ -63,13 +64,13 @@ export default definePlugin({
                     replace: (_, sectionTypes, commaOrSemi, elements, element) => `${commaOrSemi} $self.addSettings(${elements}, ${element}, ${sectionTypes}) ${commaOrSemi}`
                 },
                 {
-                    match: /({(?=.+?function (\i).{0,120}(\i)=\i\.useMemo.{0,60}return \i\.useMemo\(\(\)=>\i\(\3).+?function\(\){return )\2(?=})/,
+                    match: /({(?=.+?function (\i).{0,160}(\i)=\i\.useMemo.{0,140}return \i\.useMemo\(\(\)=>\i\(\3).+?function\(\){return )\2(?=})/,
                     replace: (_, rest, settingsHook) => `${rest}$self.wrapSettingsHook(${settingsHook})`
                 }
             ]
         },
         {
-            find: "Messages.USER_SETTINGS_ACTIONS_MENU_LABEL",
+            find: "#{intl::USER_SETTINGS_ACTIONS_MENU_LABEL}",
             replacement: {
                 match: /(?<=function\((\i),\i\)\{)(?=let \i=Object.values\(\i.\i\).*?(\i\.\i)\.open\()/,
                 replace: "$2.open($1);return;"
@@ -102,42 +103,49 @@ export default definePlugin({
             {
                 section: "EquicordSettings",
                 label: "Equicord",
+                searchableTitles: ["Equicord", "Settings", "Equicord Settings"],
                 element: VencordTab,
                 className: "vc-settings"
             },
             {
                 section: "EquicordPlugins",
                 label: "Plugins",
+                searchableTitles: ["Plugins"],
                 element: PluginsTab,
                 className: "vc-plugins"
             },
             {
                 section: "EquicordThemes",
                 label: "Themes",
+                searchableTitles: ["Themes"],
                 element: require("@components/ThemeSettings/ThemesTab").default,
                 className: "vc-themes"
             },
             !IS_UPDATER_DISABLED && {
                 section: "EquicordUpdater",
                 label: "Updater",
+                searchableTitles: ["Updater"],
                 element: UpdaterTab,
                 className: "vc-updater"
             },
             {
                 section: "EquicordCloud",
                 label: "Cloud",
+                searchableTitles: ["Cloud"],
                 element: CloudTab,
                 className: "vc-cloud"
             },
             {
                 section: "EquicordSettingsSync",
                 label: "Backup & Restore",
+                searchableTitles: ["Backup & Restore"],
                 element: BackupAndRestoreTab,
                 className: "vc-backup-restore"
             },
             {
                 section: "EquicordPatchHelper",
                 label: "Patch Helper",
+                searchableTitles: ["Patch Helper"],
                 element: PatchHelperTab,
                 className: "vc-patch-helper"
             },
@@ -162,11 +170,12 @@ export default definePlugin({
 
         try {
             const names = {
-                top: i18n.Messages.USER_SETTINGS,
-                aboveNitro: i18n.Messages.BILLING_SETTINGS,
-                belowNitro: i18n.Messages.APP_SETTINGS,
-                aboveActivity: i18n.Messages.ACTIVITY_SETTINGS
+                top: getIntlMessage("USER_SETTINGS"),
+                aboveNitro: getIntlMessage("BILLING_SETTINGS"),
+                belowNitro: getIntlMessage("APP_SETTINGS"),
+                aboveActivity: getIntlMessage("ACTIVITY_SETTINGS")
             };
+
             return header === names[settingsLocation];
         } catch {
             return firstChild === "PREMIUM";

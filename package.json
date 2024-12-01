@@ -1,7 +1,7 @@
 {
     "name": "equicord",
     "private": "true",
-    "version": "1.10.5",
+    "version": "1.10.8",
     "description": "The other cutest Discord client mod",
     "homepage": "https://github.com/Equicord/Equicord#readme",
     "bugs": {
@@ -38,6 +38,7 @@
     "dependencies": {
         "@ffmpeg/ffmpeg": "^0.12.10",
         "@ffmpeg/util": "^0.12.1",
+        "@intrnl/xxhash64": "^0.1.2",
         "@sapphi-red/web-noise-suppressor": "0.3.5",
         "@types/less": "^3.0.6",
         "@types/stylus": "^0.48.42",
@@ -47,6 +48,7 @@
         "fflate": "^0.8.2",
         "gifenc": "github:mattdesl/gifenc#64842fca317b112a8590f8fef2bf3825da8f6fe3",
         "jsqr": "1.4.0",
+        "idb": "8.0.0",
         "monaco-editor": "^0.50.0",
         "nanoid": "^5.0.7",
         "usercss-meta": "^0.12.0",

@@ -67,7 +67,7 @@ export default definePlugin({
 
     patches: [
         {
-            find: ".Messages.ERRORS_UNEXPECTED_CRASH",
+            find: "#{intl::ERRORS_UNEXPECTED_CRASH}",
             replacement: {
                 match: /this\.setState\((.+?)\)/,
                 replace: "$self.handleCrash(this,$1);"
@@ -107,7 +107,7 @@ export default definePlugin({
             try {
                 if (!hasCrashedOnce) {
                     hasCrashedOnce = true;
-                    maybePromptToUpdate("Uh oh, Discord has just crashed... but good news, there is a Vencord update available that might fix this issue! Would you like to update now?", true);
+                    maybePromptToUpdate("Uh oh, Discord has just crashed... but good news, there is a Equicord update available that might fix this issue! Would you like to update now?", true);
                 }
             } catch { }
 

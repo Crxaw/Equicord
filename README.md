@@ -10,7 +10,7 @@ You can join our [discord server](https://discord.gg/5Xh2W87egW) for commits, ch
 
 ### Extra included plugins
 <details>
-<summary>146 additional plugins</summary>
+<summary>147 additional plugins</summary>
 
 ### All Platforms
 - AllCallTimers by MaxHerbold & D3SOX
@@ -66,7 +66,6 @@ You can join our [discord server](https://discord.gg/5Xh2W87egW) for commits, ch
 - GodMode by Tolgchu
 - GoodPerson by nin0dev & mantikafasi
 - GoogleThat by Samwich
-- Grammar by Samwich
 - GrammarFix by unstream
 - HideChatButtons by iamme
 - HideMessage by Hanzy
@@ -108,6 +107,7 @@ You can join our [discord server](https://discord.gg/5Xh2W87egW) for commits, ch
 - NotificationTitle by Kyuuhachi
 - OnePingPerDM by ProffDea
 - PinIcon by iamme
+- PolishWording (Grammar) by Samwich
 - PlatformSpoofer by Drag
 - PurgeMessages by bhop & nyx
 - QuestionMarkReplacement by nyx
@@ -121,6 +121,7 @@ You can join our [discord server](https://discord.gg/5Xh2W87egW) for commits, ch
 - SekaiStickers by MaiKokain
 - ServerSearch by camila314
 - ShowBadgesInChat by Inbestigator & KrystalSkull
+- Signature by KrystalSkull
 - SidebarChat by Joona
 - Slap by Korbo
 - SoundBoardLogger by Moxxie, fres, echo, maintained by thororen
@@ -143,7 +144,7 @@ You can join our [discord server](https://discord.gg/5Xh2W87egW) for commits, ch
 - VCSupport by thororen
 - VencordRPC by AutumnVN
 - VideoSpeed by Samwich
-- ViewRaw2 by Kyuuhachi
+- ViewRawVariant (ViewRaw2) by Kyuuhachi
 - VoiceChannelLog by Sqaaakoi & maintained by thororen
 - VoiceChatUtilities by D3SOX
 - WebpackTarball by Kyuuhachi
@@ -158,7 +159,7 @@ You can join our [discord server](https://discord.gg/5Xh2W87egW) for commits, ch
 - None At This Time
 
 ### Vesktop & Equibop Only
-- None At This Time
+- ScreenRecorder by AutumnVN
 
 ### Discord Desktop Only
 - MediaDownloader by Colorman
@@ -183,8 +184,9 @@ MacOS
 
 Linux
 - [CLI](https://github.com/Equicord/Equilotl/releases/latest/download/EquilotlCli-Linux)
-
-
+```shell
+sh -c "$(curl -sS https://raw.githubusercontent.com/Equicord/Equicord/refs/heads/main/misc/install.sh)"
+```
 ## Installing Equicord Devbuild
 
 ### Dependencies

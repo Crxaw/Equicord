@@ -4,9 +4,10 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+import "styles.css?managed";
+
 import { DataStore } from "@api/index";
 import { addPreSendListener, removePreSendListener } from "@api/MessageEvents";
-import { ExpandableHeader } from "@components/ExpandableHeader";
 import { Heart } from "@components/Heart";
 import { EquicordDevs } from "@utils/constants";
 import { openUserProfile } from "@utils/discord";
@@ -211,12 +212,14 @@ class DataUI {
 
 
         return <aside key={key} >
-            <ExpandableHeader defaultState={true} headerText={key.toUpperCase()}>
-                <Flex style={{ gap: "calc(0.5em + 0.5vw) 0.2em", flexDirection: "column" }}>
-                    {usersElements}
-                </Flex>
-            </ExpandableHeader>
-
+            <div className={"vc-i-remember-you-user-header-container"}>
+                <Text>{key.toUpperCase()}</Text>
+                <div className={"vc-i-remember-you-user-header-btns"}>
+                    <Flex style={{ gap: "calc(0.5em + 0.5vw) 0.2em", flexDirection: "column" }}>
+                        {usersElements}
+                    </Flex>
+                </div>
+            </div>
         </aside>;
     }
 
@@ -366,8 +369,13 @@ export default definePlugin({
         );
         data.storageAutoSaveProtocol();
 
-        // @ts-ignore
-        Vencord.Plugins.plugins.Settings.customSections.push(ID => ({
+        const customSettingsSections = (
+            Vencord.Plugins.plugins.Settings as any as {
+                customSections: ((ID: Record<string, unknown>) => any)[];
+            }
+        ).customSections;
+
+        customSettingsSections.push(_ => ({
             section: "iremeberyou.display-data",
             label: "IRememberYou",
             element: () => ui.toElement(data.usersCollection),

@@ -131,18 +131,19 @@ export default definePlugin({
     dependencies: ["UserSettingsAPI"],
     patches: [
         {
-            find: "Messages.CUSTOM_STATUS_SET_CUSTOM_STATUS}",
+            find: "#{intl::CUSTOM_STATUS_SET_CUSTOM_STATUS}",
             replacement: {
-                match: /\.ModalFooter,.{0,70}\.Messages\.SAVE\}\)/,
+                match: /\.ModalFooter,.{0,70}\i\.\i\.string\(\i\.\i#{intl::SAVE}\)\}\)/,
                 replace: "$&,$self.renderRememberButton(this.state)"
             }
         },
         {
-            find: /"aria-label":.{0,3}\.Messages.STATUS_MENU_LABEL/,
+            find: "#{intl::STATUS_MENU_LABEL}",
             replacement: {
-                match: /!\i&&(.{0,15}\i\.Fragment.{0,55}null==(\i).{0,200}customEmojiPlaceholder\}\),onClick:([^}]+}))/,
+                match: /!\i\i&&(.{0,20}\i\.Fragment.{0,100}null==(\i).{0,200}customEmojiPlaceholder\}\),onClick:(.*?}))/,
                 replace: "$self.render($2, $3),false&&$1"
-            }
+            },
+            all: true
         }
     ],
     render(status: null | { emoji: Emoji | null; }, openCustomStatusModal: () => void) {
